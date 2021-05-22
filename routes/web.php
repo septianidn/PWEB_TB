@@ -13,6 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/',  'welcome');
+
+Route::get('/mahasiswa', 'MahasiswaController@index');
+Route::get('/mahasiswa/tambah', 'MahasiswaController@create');
+Route::post('/mahasiswa/tambah', 'MahasiswaController@store');
+Route::get('/mahasiswa/{mhs}/edit', 'MahasiswaController@edit');
+Route::patch('/mahasiswa/update', 'MahasiswaController@update');
+Route::get('/mahasiswa/{mhs}/hapus', 'MahasiswaController@destroy');
+

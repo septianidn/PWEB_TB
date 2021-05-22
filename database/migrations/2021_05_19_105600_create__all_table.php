@@ -14,7 +14,7 @@ class CreateAllTable extends Migration
     public function up()
     {
         Schema::create('kelas', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->increments('id');
             $table->string('kode_kelas',50);
             $table->string('kode_matkul',50);
             $table->string('nama_matkul',50);
@@ -25,19 +25,19 @@ class CreateAllTable extends Migration
         });
 
         Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->increments('id');
             $table->string('nama', 50);
-            $table->string('nim', 18);
+            $table->string('nim', 10);
             $table->string('email', 50);
-            $table->integer('tipe');
+            $table->integer('tipe')->default(1);
             $table->integer('password');
             $table->timestamps();
         });
 
         Schema::create('krs', function (Blueprint $table) {
-            $table->integer('krs_id')->primary();
-            $table->integer('kelas_id');
-            $table->integer('mahasiswa_id');
+            $table->increments('krs_id');
+            $table->unsignedInteger('kelas_id');
+            $table->unsignedInteger('mahasiswa_id');
             $table->timestamps();
 
             $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade');
@@ -45,8 +45,8 @@ class CreateAllTable extends Migration
         });
 
         Schema::create('pertemuan', function (Blueprint $table) {
-            $table->integer('pertemuan_id')->primary();
-            $table->integer('krs_id');
+            $table->increments('pertemuan_id');
+            $table->unsignedInteger('krs_id');
             $table->integer('pertemuan_ke');
             $table->date('tanggal');
             $table->timestamps();
@@ -55,9 +55,9 @@ class CreateAllTable extends Migration
         });
 
         Schema::create('absensi', function (Blueprint $table) {
-            $table->integer('absensi_id')->primary();
-            $table->integer('krs_id');
-            $table->integer('pertemuan_id');
+            $table->increments('absensi_id');
+            $table->unsignedInteger('krs_id');
+            $table->unsignedInteger('pertemuan_id');
             $table->time('jam_masuk');
             $table->time('jam_keluar');
             $table->timestamps();
