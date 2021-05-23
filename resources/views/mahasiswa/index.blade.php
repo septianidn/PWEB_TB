@@ -10,7 +10,7 @@
             {{session('status')}}
         </div> 
     @endif
-
+{{ request()->is('mahasiswa') ? ' active' : ''}}
     <table class="table">
   <thead>
     <tr>
