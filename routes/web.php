@@ -23,4 +23,9 @@ Route::post('/mahasiswa/tambah', 'MahasiswaController@store');
 Route::get('/mahasiswa/{mhs}/edit', 'MahasiswaController@edit');
 Route::patch('/mahasiswa/update', 'MahasiswaController@update');
 Route::get('/mahasiswa/{mhs}/hapus', 'MahasiswaController@destroy');
+Route::get('/kelas','KelasController@index');
+Route::get('/kelas/tambah','KelasController@create');
+Route::post('/kelas/tambah','KelasController@store');
+Route::get('/kelas/{kelas}/edit','KelasController@edit');
+Route::get('/kelas/{kelas}/detail','KelasController@show');
 
