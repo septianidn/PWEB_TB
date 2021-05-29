@@ -10,7 +10,7 @@
           <a class="nav-link{{ request()->is('/') ? ' active' : ''}}" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Profile</a>
+          <a class="nav-link{{ request()->is('kelas') ? ' active' : ''}}" href="/kelas">Kelas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link{{ request()->is('mahasiswa') ? ' active' : ''}}" href="/mahasiswa">Mahasiswa</a>
