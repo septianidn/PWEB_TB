@@ -27,5 +27,6 @@ Route::get('/kelas','KelasController@index');
 Route::get('/kelas/tambah','KelasController@create');
 Route::post('/kelas/tambah','KelasController@store');
 Route::get('/kelas/{kelas}/edit','KelasController@edit');
+Route::patch('/kelas/{kelas}/edit','KelasController@update');
 Route::get('/kelas/{kelas}/detail','KelasController@show');
 

@@ -37,6 +37,27 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
+        $pesan = [
+
+            'required' => 'Field ini harus diisi!',
+            'max' => 'Maksimal Karakter adalah :max!',
+            'numeric' => 'Gunakan angka!',
+            'integer' => 'Gunakan angka!',
+            'regex' => 'Gunakan kombinasi huruf besar dan angka!',
+            'lt' => 'Maksimal SKS adalah 4!',
+            'min' => 'Minimal Karakter adalah :min!',
+            'alpha' => 'Gunakan huruf!',
+
+        ];
+
+        $this->validate($request,[
+            'kode_kelas' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
+            'kode_matkul' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
+            'nama_matkul' => 'required|alpha|max:50',
+            'tahun' => 'required|integer|min:2000|max:2030',
+            'sks' => 'required|numeric|lt:5|min:1'
+        ], $pesan);
+
         Kelas::create($request->all());
         return redirect('/kelas')->with('status','Data Berhasil Ditambahkan');
     }
@@ -62,7 +83,8 @@ class KelasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kelas=Kelas::findOrFail($id);
+        return view('kelas.edit', compact('kelas'));
     }
 
     /**
@@ -74,7 +96,36 @@ class KelasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pesan = [
+
+            'required' => 'Field ini harus diisi!',
+            'max' => 'Maksimal Karakter adalah :max!',
+            'numeric' => 'Gunakan angka!',
+            'integer' => 'Gunakan angka!',
+            'regex' => 'Gunakan kombinasi huruf besar dan angka!',
+            'lt' => 'Maksimal SKS adalah 4!',
+            'min' => 'Minimal Karakter adalah :min!',
+            'alpha' => 'Gunakan huruf!',
+
+        ];
+
+        $this->validate($request,[
+            'kode_kelas' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
+            'kode_matkul' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
+            'nama_matkul' => 'required|alpha|max:50',
+            'tahun' => 'required|integer|min:2000|max:2030',
+            'sks' => 'required|numeric|lt:5|min:1'
+        ], $pesan);
+
+        Kelas::where('id', $id)->UPDATE([
+            'kode_kelas'=>$request->kode_kelas, 
+            'kode_matkul'=>$request->kode_matkul, 
+            'nama_matkul'=>$request->nama_matkul, 
+            'tahun'=>$request->tahun, 
+            'semester'=>$request->semester, 
+            'sks'=>$request->sks
+        ]);
+        return redirect('/kelas')->with('status','Data Berhasil Diedit');
     }
 
     /**
