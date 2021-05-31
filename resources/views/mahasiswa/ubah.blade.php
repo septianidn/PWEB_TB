@@ -15,7 +15,7 @@
                 <input type="hidden" name="id" value="{{$mahasiswa->id}}">
                 <div class="form-group">
                     <label>Nama :</label>
-                    <input type="text" class="form-control @error('nama')is-invalid @enderror" name="nama" value="{{ $mahasiswa->nama }}">
+                    <input type="text" class="form-control @error('nama')is-invalid @enderror" name="nama" value="{{ $mahasiswa->mahasiswa->nama }}">
                     @error('nama')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -24,7 +24,7 @@
                 </div>
                 <div class="form-group">
                     <label>NIM :</label>
-                    <input type="number" class="form-control @error('nim')is-invalid @enderror" name="nim" value="{{ $mahasiswa->nim }}">
+                    <input type="number" class="form-control @error('nim')is-invalid @enderror" name="nim" value="{{ $mahasiswa->mahasiswa->nim }}">
                      @error('nim')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -35,7 +35,7 @@
                     <label>Email : </label>
                     <input type="email" class="form-control" name="email" value="{{ $mahasiswa->email }}"> 
                 </div>
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label>Password : </label>
                     <input type="password" class="form-control @error('nim')is-invalid @enderror" name="password">
                      @error('password')
@@ -44,7 +44,7 @@
                     </div>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary" name="submit">Tambah</button>
+                <button type="submit" class="btn btn-primary" name="submit">Ubah</button>
                 </form>
             </div>
         </div>

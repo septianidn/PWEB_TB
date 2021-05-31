@@ -13,8 +13,11 @@
     <div class="row">
         <div class="d-flex justify-content-between">
             <h1 class="mt-3">Daftar Kelas</h1>
-            <a href="/kelas/tambah" class="btn btn-sm btn-success">Tambah Data</a>
+            <div>
+                <a href="/kelas/tambah" class="btn btn-sm btn-success">Tambah Data</a>
+            </div>
         </div> 
+    @if($kelas->count())
         <div class="col-6">
             @foreach($kelas as $kls)
             <div class="list-group-item d-flex" >
@@ -27,6 +30,11 @@
             @endforeach
         
         </div>
+    @else
+        <div class="alert alert-info">
+            Tidak ada data
+        </div>
+    @endif    
     </div>
 
 <br/>

@@ -27,11 +27,13 @@ class CreateAllTable extends Migration
         Schema::create('mahasiswa', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama', 50);
-            $table->string('nim', 10);
-            $table->string('email', 50);
-            $table->integer('tipe')->default(1);
-            $table->integer('password');
+            $table->string('nim', 10)->unique();
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+        });
+
+        Schema::table('mahasiswa', function($table) {
+            $table->foreign('user_id')->references('id')->on('users');
         });
 
         Schema::create('krs', function (Blueprint $table) {
@@ -48,6 +50,7 @@ class CreateAllTable extends Migration
             $table->increments('pertemuan_id');
             $table->unsignedInteger('krs_id');
             $table->integer('pertemuan_ke');
+            $table->string('materi', 50);
             $table->date('tanggal');
             $table->timestamps();
 
@@ -60,6 +63,7 @@ class CreateAllTable extends Migration
             $table->unsignedInteger('pertemuan_id');
             $table->time('jam_masuk');
             $table->time('jam_keluar');
+            $table->integer('durasi');
             $table->timestamps();
 
             $table->foreign('krs_id')->references('krs_id')->on('krs')->onDelete('cascade');
