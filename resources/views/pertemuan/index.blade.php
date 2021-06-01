@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Halaman Kelas')
+@section('title', 'Halaman Pertemuan')
 
 @section('content')
 
@@ -12,19 +12,18 @@
     
     <div class="row">
         <div class="d-flex justify-content-between">
-            <h1 class="mt-3">Daftar Kelas</h1>
+            <h1 class="mt-3">Daftar Pertemuan</h1>
             <div>
-                <a href="/kelas/tambah" class="btn btn-sm btn-success">Tambah Data</a>
+                <a href="/pertemuan/tambah" class="btn btn-sm btn-success">Tambah Data</a>
             </div>
         </div> 
-    @if($kelas->count())
+    @if($pertemuan->count())
         <div class="col-6">
-            @foreach($kelas as $kls)
+            @foreach($pertemuan as $prt)
             <div class="list-group-item d-flex" >
-                <a href="/pertemuan" class="mr-auto p-2">{{$kls->nama_matkul}}</a>
+                <div class="mr-auto p-2">{{$prt->pertemuan_ke}}</div>
                 <div class="p-2">
-                <a href="/kelas/{{$kls->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
-                <a href="/kelas/{{$kls->id}}/detail" class="btn btn-sm btn-success">Detail</a>
+                <a href="/pertemuan/{{$prt->pertemuan_id}}/detail" class="btn btn-sm btn-success">Detail</a>
                 </div>
             </div>
             @endforeach

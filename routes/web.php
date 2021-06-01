@@ -17,6 +17,16 @@ use Illuminate\Http\Request;
 
 Route::view('/',  'welcome');
 
+Route::get('login', 'AuthController@showFormLogin')->name('login');
+Route::post('login', 'AuthController@login');
+Route::get('register', 'AuthController@showFormRegister')->name('register');
+Route::post('register', 'AuthController@register');
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('logout', 'AuthController@logout')->name('logout');
+     
+});
 Route::get('/mahasiswa', 'MahasiswaController@index');
 Route::get('/mahasiswa/tambah', 'MahasiswaController@create');
 Route::post('/mahasiswa/tambah', 'MahasiswaController@store');
@@ -29,4 +39,8 @@ Route::post('/kelas/tambah','KelasController@store');
 Route::get('/kelas/{kelas}/edit','KelasController@edit');
 Route::patch('/kelas/{kelas}/edit','KelasController@update');
 Route::get('/kelas/{kelas}/detail','KelasController@show');
+Route::get('/pertemuan','PertemuanController@index');
+Route::get('/pertemuan/tambah','PertemuanController@create');
+Route::post('/pertemuan/tambah','PertemuanController@store');
+Route::get('/pertemuan/{pertemuan}/detail','PertemuanController@show');
 
