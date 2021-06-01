@@ -41,8 +41,8 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for=""><strong>Email</strong></label>
-                        <input type="text" name="email" class="form-control" placeholder="Email">
+                        <label for=""><strong>Username</strong></label>
+                        <input type="text" name="username" class="form-control" placeholder="Username">
                     </div>
                     <div class="form-group">
                         <label for=""><strong>Password</strong></label>
@@ -51,7 +51,6 @@
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-block">Log In</button>
-                    <p class="text-center">Belum punya akun? <a href="{{ route('register') }}">Register</a> sekarang!</p>
                 </div>
                 </form>
             </div>

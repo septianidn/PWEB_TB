@@ -21,7 +21,7 @@
         <div class="col-6">
             @foreach($kelas as $kls)
             <div class="list-group-item d-flex" >
-                <a href="/pertemuan" class="mr-auto p-2">{{$kls->nama_matkul}}</a>
+                <div class="mr-auto p-2">{{$kls->nama_matkul}}</div>
                 <div class="p-2">
                 <a href="/kelas/{{$kls->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
                 <a href="/kelas/{{$kls->id}}/detail" class="btn btn-sm btn-success">Detail</a>
