@@ -10,15 +10,7 @@
             <div class="col mt-md-5 mr-5 ml-5">
                 <h1>Tambah Mahasiswa</h1>
 
-                <!-- @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif -->
+                @include('layouts.alert')
                
                 <form action="/mahasiswa/tambah" method="POST">
                 {{ csrf_field() }}
@@ -34,7 +26,7 @@
                 </div>
                 <div class="form-group">
                     <label>NIM :</label>
-                    <input type="number" class="form-control @error('nim')is-invalid @enderror" name="nim" value="{{ old('nama')}}>
+                    <input type="number" class="form-control @error('nim')is-invalid @enderror" name="nim" value="{{ old('nim')}}">
                      @error('nim')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -43,8 +35,8 @@
                 </div>
                 <div class="form-group">
                     <label>Email : </label>
-                    <input type="email" class="form-control @error('nim')is-invalid @enderror" name="email">
-                    @error('password')
+                    <input type="email" class="form-control @error('email')is-invalid @enderror" name="email" value="{{ old('email')}}">
+                    @error('email')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>
@@ -52,8 +44,17 @@
                 </div>
                 <div class="form-group mb-3">
                     <label>Password : </label>
-                    <input type="password" class="form-control @error('nim')is-invalid @enderror" name="password">
+                    <input type="password" class="form-control @error('password')is-invalid @enderror" name="password">
                      @error('password')
+                    <div class="invalid-feedback">
+                        {{$message}}
+                    </div>
+                    @enderror
+                </div>
+                <div class="form-group mb-3">
+                    <label>Konfirmasi Password : </label>
+                    <input type="password" class="form-control @error('password_confirmation')is-invalid @enderror" name="password_confirmation">
+                     @error('password_confirmation')
                     <div class="invalid-feedback">
                         {{$message}}
                     </div>

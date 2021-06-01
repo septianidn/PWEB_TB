@@ -4,8 +4,8 @@
         </div> 
 @endif
 
-@if(session('error'))
+@if(session('eror'))
         <div class="alert alert-danger">
-            {{session('error')}}
+            {{session('eror')}}
         </div> 
 @endif

@@ -46,36 +46,44 @@ class MahasiswaController extends Controller
 
             'required' => 'Field ini harus diisi!',
             'max' => 'Maksimal Karakter adalah 50!',
+            'min' => 'Minimal Karakter adalah 6!',
             'size' => 'Jumlah karakter adalah 10',
+            'alpha_num' => 'gunakan kombinasi huruf dan angka',
+            'confirmed' => 'Password tidak cocok',
             'digits' => 'Gunakan angka'
 
         ];
 
         $this->validate($request,[
             'nama' => 'required|max:50',
-            'password' => 'required|max:15',
+            'password' => 'required|alpha_num|min:6|confirmed',
+            'password_confirmation' => 'required|min:6',
             'email' => 'required|email',
             'nim' => 'required|size:10'
         ], $pesan);
 
     
         $cek = User::where('email' , $request->email)->first();
-        $cek2 = Mahasiswa::where('nim' , $request->nim)->first();
+        $cek2 = User::where('username' , $request->nim)->first();
         if ($cek !== null || $cek2 !== null) {
-        return redirect('/mahasiswa')->with('error','Data Mahasiswa Gagal Ditambahkan');
+            
+            return redirect()->back()->with('eror','NIM atau Email Sudah pernah digunakan');
         }
     
        
         $user = new User;
         $user->email = $request->email;
+        $user->username = $request->nim;
         $user->password = Hash::make($request->password);
         $user->save();
+      
 
+        
         $mahasiswa = new Mahasiswa();
         $mahasiswa->nama = $request->nama;
         $mahasiswa->nim = $request->nim;
         $user->mahasiswa()->save($mahasiswa);
-        // $mahasiswa->save();
+        $mahasiswa->save();
 
         return redirect('/mahasiswa')->with('status','Data Mahasiswa Berhasil Ditambahkan');
     }
