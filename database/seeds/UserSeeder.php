@@ -12,6 +12,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         \App\User::create([
+            'name'	=> 'badu',
             'username'	=> 'admin',
             'email'	=> 'admin@gmail.com',
             'role' => '1',

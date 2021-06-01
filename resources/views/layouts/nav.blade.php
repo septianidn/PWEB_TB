@@ -15,9 +15,7 @@
         <li class="nav-item">
           <a class="nav-link{{ request()->is('mahasiswa') ? ' active' : ''}}" href="/mahasiswa">Mahasiswa</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
+        
     </div>
   </div>
 </nav>

@@ -21,6 +21,7 @@
       <th scope="col">No</th>
       <th scope="col">Nama</th>
       <th scope="col">NIM</th>
+      <th scope="col">Email</th>
       <th scope="col">Aksi</th>
     </tr>
   </thead>
@@ -32,6 +33,7 @@
       <th scope="row">{{$loop->iteration}}</th>
       <td>{{$mhs->nama}}</td>
       <td>{{$mhs->nim}}</td>
+      <td>{{$mhs->email}}</td>
       <td>
       <a href="/mahasiswa/{{ $mhs->user_id}}/edit" class="btn btn-warning btn-sm">Edit</a>
 

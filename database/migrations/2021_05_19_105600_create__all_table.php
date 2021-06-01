@@ -28,6 +28,7 @@ class CreateAllTable extends Migration
             $table->increments('id');
             $table->string('nama', 50);
             $table->string('nim', 10)->unique();
+            $table->string('email')->unique();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
