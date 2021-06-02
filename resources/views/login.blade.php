@@ -6,15 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('/css/login.css') }}">
 </head>
 <body>
-    <div class="container">
-        <div class="col-md-4 offset-md-4 mt-5">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="text-center">Form Login</h3>
-                </div>
-                <form action="{{ route('login') }}" method="post">
+<div class="container-fluid">
+  <div class="row no-gutter">
+    <div class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+    <div class="col-md-8 col-lg-6">
+      <div class="login d-flex align-items-center py-5">
+        <div class="container">
+            <h2 id="h31">HORE-HORE</h2>
+            <h2 id="h32">PROJECT</h2>
+          <div class="row">
+            <div class="col-md-9 col-lg-8 mx-auto">
+              <h3 class="login-heading mb-4">Sign In!</h3>
+              <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="card-body">
                     @if(session('errors'))
@@ -41,20 +47,28 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <label for=""><strong>Username</strong></label>
+                        <label for="">Username</label>
                         <input type="text" name="username" class="form-control" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <label for=""><strong>Password</strong></label>
+                        <label for="">Password</label>
                         <input type="password" name="password" class="form-control" placeholder="Password">
                     </div>
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">Remember password</label>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-block">Log In</button>
+                <div>
+                    <button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Log In</button>
                 </div>
                 </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
+</div>
 </body>
 </html>
