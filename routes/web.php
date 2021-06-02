@@ -23,21 +23,30 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('logout', 'AuthController@logout')->name('logout');
+
 Route::get('/mahasiswa', 'MahasiswaController@index');
 Route::get('/mahasiswa/tambah', 'MahasiswaController@create');
 Route::post('/mahasiswa/tambah', 'MahasiswaController@store');
 Route::get('/mahasiswa/{mhs}/edit', 'MahasiswaController@edit');
 Route::patch('/mahasiswa/update', 'MahasiswaController@update');
 Route::delete('/mahasiswa/{mhs}/hapus', 'MahasiswaController@destroy');
+
 Route::get('/kelas','KelasController@index');
 Route::get('/kelas/tambah','KelasController@create');
 Route::post('/kelas/tambah','KelasController@store');
 Route::get('/kelas/{kelas}/edit','KelasController@edit');
 Route::patch('/kelas/{kelas}/edit','KelasController@update');
 Route::get('/kelas/{kelas}/detail','KelasController@show');
+
 Route::get('/pertemuan','PertemuanController@index');
 Route::get('/pertemuan/tambah','PertemuanController@create');
 Route::post('/pertemuan/tambah','PertemuanController@store');
 Route::get('/pertemuan/{pertemuan}/detail','PertemuanController@show');   
+
+Route::get('/kelas/{kelas}/detail','KelasController@show')->name('Detail_Kelas');
+Route::get('/{kelas}/peserta/tambah','KelasController@peserta');
+Route::post('/{kelas}/peserta/tambah','KelasController@tambahpeserta');
+Route::get('/peserta/{kelas_id}/{mahasiswa_id}/hapus','KelasController@hapuspeserta');
 });
+
 

@@ -4,38 +4,60 @@
 
 @section('content')
 
-     @if(session('status'))
-        <div class="alert alert-success">
-            {{session('status')}}
-        </div> 
-    @endif
+@include('layouts.alert')
     
     <div class="row">
         <div class="d-flex justify-content-between">
             <h1 class="mt-3">Detail Kelas</h1>
         </div> 
-        <div class="col-6">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$kelas['nama_matkul']}}</h5>
-                        <ul class="list-group">
-                        <li class="list-group-item">Kode Kelas : {{$kelas['kode_kelas']}}</li>
-                        <li class="list-group-item">Kode Matkul : {{$kelas['kode_matkul']}}</li>
-                        <li class="list-group-item">Tahun Ajaran : {{$kelas['tahun']}}</li>
-                        <li class="list-group-item">Semester : {{$kelas['semester']}}</li>
-                        <li class="list-group-item">SKS : {{$kelas['sks']}}</li>
-                        </ul>
-                        <a href="/kelas" class="btn btn-primary">Kembali</a>
-                    </div>
-                </div>
-        
+        <div class="mt-3">
+            <h3>{{$kelas -> nama_matkul}}</h3>
+            <hr>
+            <div class="text-secondary">
+            Kode Matkul : {{$kelas -> kode_matkul}} &middot;
+            Kode Kelas : {{$kelas -> kode_kelas}} &middot;
+            Tahun Ajaran : {{$kelas -> tahun}} &middot;
+            Semester : {{$kelas -> semester==1?'Ganjil':'Genap'}} &middot;
+            SKS : {{$kelas -> sks}} &middot;
+            </div>
         </div>
+        
     </div>
+    <div class="mt-5">
+    <h4>Peserta Kelas</h4>
+        <table class="table">
+        <thead class="thead-light">
+            <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Nim</th>
+            <th scope="col">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+            @foreach($mahasiswa->mahasiswa as $mhs)
+            <tr>
+            <th scope="row">{{$loop->iteration}}</th>
+            <td>{{$mhs->nama}}</td>
+            <td>{{$mhs->nim}}</td>
+            <td>
+
+            <a href="/peserta/{{$mahasiswa->id}}/{{$mhs->id}}/hapus" onclick="return confirm('Data akan dihapus!\nApakah anda yakin?')" class="btn btn-danger btn-sm">Hapus</a>
+
+            </td>
+            </tr>
+            @endforeach
+
+        </tbody>
+  
+        </table>
+    </div>
+    <a href="/{{$kelas -> id}}/peserta/tambah" class="btn btn-primary">Tambah</a>
 
 <br/>
 
  
 <br/>
-	
 
 @endsection

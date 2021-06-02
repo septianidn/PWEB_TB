@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Kelas;
+use App\Krs;
+use App\Mahasiswa;
 
 use Illuminate\Http\Request;
 
@@ -53,7 +55,7 @@ class KelasController extends Controller
         $this->validate($request,[
             'kode_kelas' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
             'kode_matkul' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
-            'nama_matkul' => 'required|alpha|max:50',
+            'nama_matkul' => 'required|String|max:50',
             'tahun' => 'required|integer|min:2000|max:2030',
             'sks' => 'required|numeric|lt:5|min:1'
         ], $pesan);
@@ -70,9 +72,13 @@ class KelasController extends Controller
      */
     public function show($id)
     {
-
+        // $krs = Mahasiswa::find($id);
+        // dd($krs);
+        // $mahasiswa = Mahasiswa::whereIn('id',$krs)->pluck();
+        // dd ($mahasiswa);
         $kelas=Kelas::findOrFail($id);
-        return view('kelas.detail', compact('kelas'));
+        $mahasiswa=Kelas::find($id);
+        return view('kelas.detail', compact('kelas','mahasiswa'));
     }
 
     /**
@@ -112,7 +118,7 @@ class KelasController extends Controller
         $this->validate($request,[
             'kode_kelas' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
             'kode_matkul' => 'required|regex:/^(?=.*[A-Z])(?=.*\d).+$/|max:10',
-            'nama_matkul' => 'required|alpha|max:50',
+            'nama_matkul' => 'required|String|max:50',
             'tahun' => 'required|integer|min:2000|max:2030',
             'sks' => 'required|numeric|lt:5|min:1'
         ], $pesan);
@@ -134,8 +140,41 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function peserta($id)
     {
-        //
+        $krs = Krs::where('kelas_id',$id)->get();
+        $mhs=[];
+        if ($krs->isEmpty()){
+            $mahasiswa = Mahasiswa::all();
+        } 
+        else{
+            foreach ($krs as $k){
+                $mhs[] = $k->mahasiswa_id;
+            }
+                $mahasiswa = Mahasiswa::select('*')->whereNotIn('id',$mhs) -> get();
+        } 
+        return view('kelas.peserta.tambah',compact('mahasiswa','id'));
+    }
+    public function tambahpeserta(Request $request, $id)
+    {
+        $kelas = Kelas::findOrFail($id);
+        if ($request->mahasiswa==null){
+            return \Redirect::route('Detail_Kelas',$id)->with('eror','Data Mahasiswa Kosong');
+        }
+        else{
+            Krs::create([
+                'kelas_id' => $kelas -> id,
+                'mahasiswa_id' => $request -> mahasiswa
+            ]);
+        }
+        return \Redirect::route('Detail_Kelas',$id)->with('status','Data Berhasil Ditambah');
+    }
+    public function hapuspeserta($kelas, $id)
+    {
+        // $krs = Krs::where('kelas_id',$kelas)->where('mahasiswa_id',$mhs)->first();
+        //Krs::destroy($krs->krs_id);
+        $mhs = Kelas::findOrFail($kelas);
+        $mhs->mahasiswa()->detach($id);
+        return \Redirect::route('Detail_Kelas',$kelas)->with('status','Data Berhasil Dihapus');
     }
 }
