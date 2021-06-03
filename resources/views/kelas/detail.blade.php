@@ -5,7 +5,6 @@
 @section('content')
 
 @include('layouts.alert')
-<a href="/kelas" class="btn btn-danger">Kembali</a>
     <div class="row">
         <div class="d-flex justify-content-between">
             <h1 class="mt-3">Detail Kelas</h1>
@@ -54,7 +53,8 @@
         </table>
     </div>
     <a href="/{{$kelas -> id}}/peserta/tambah" class="btn btn-primary">Tambah</a>
-
+    <br><br>
+    <a href="/pertemuan/{{$kelas -> id}}/" class="btn btn-success">Pertemuan</a>
 <br/>
 
  

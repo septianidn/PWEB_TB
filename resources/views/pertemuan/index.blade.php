@@ -14,7 +14,7 @@
         <div class="d-flex justify-content-between">
             <h1 class="mt-3">Daftar Pertemuan</h1>
             <div>
-                <a href="/pertemuan/tambah" class="btn btn-sm btn-success">Tambah Data</a>
+                <a href="/pertemuan/{{$kelas -> id}}/tambah" class="btn btn-sm btn-success">Tambah Data</a>
             </div>
         </div> 
     @if($pertemuan->count())

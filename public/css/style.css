@@ -61,6 +61,16 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.curved-div {
+  background:rgba(21, 112, 219, 0.73);
+  color: #FFF;
+  text-align: center;
+}
+
+.curved-div svg {
+  display: block;
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -508,6 +518,7 @@ progress {
   font-size: calc(1.425rem + 2.1vw);
   font-weight: 300;
   line-height: 1.2;
+  color: #1D324B;
 }
 @media (min-width: 1200px) {
   .display-5 {
@@ -7565,7 +7576,7 @@ textarea.form-control-lg {
 }
 
 .bg-light {
-  background-color: #f8f9fa !important;
+  background-color: #e7e7e7 !important;
 }
 
 .bg-dark {

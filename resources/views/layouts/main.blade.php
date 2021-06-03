@@ -16,7 +16,6 @@
   </head>
   <body>
     
-
         @include('layouts.nav')
 
         <div class="py-4">

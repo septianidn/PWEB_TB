@@ -4,13 +4,11 @@
 
 @section('content')
 <div class="card-body">
-    <h5>Welcome Home!, <strong>{{ Auth::user()->name }}</strong></h5>
+    <h5>Welcome Home! <strong>{{ Auth::user()->name }}</strong></h5>
 </div>
         <!-- Header-->
-        <header class="py-5">
-            <div class="container px-lg-5">
-                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                    <div class="m-4 m-lg-2">
+        <header class="py-5" style="background-image: url('img/background-home.jpg'); background-size: 50%">
+            <div class="text-center my-5">
                         <h1 class="display-5 fw-bold">Hore-hore</h1>
                         <h1 class="display-5 fw-bold">Project</h1>
                         <p class="fs-4"></p>

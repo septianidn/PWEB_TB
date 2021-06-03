@@ -16,7 +16,8 @@ class PertemuanController extends Controller
     public function index()
     {
         $pertemuan=Pertemuan::orderBy('pertemuan_ke','asc')->get();
-        return view('pertemuan.index', compact('pertemuan'));
+        $kelas=Kelas::findOrFail($id);
+        return view('pertemuan.index', compact('pertemuan','kelas'));
     }
 
     /**

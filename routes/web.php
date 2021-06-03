@@ -38,10 +38,10 @@ Route::get('/kelas/{kelas}/edit','KelasController@edit');
 Route::patch('/kelas/{kelas}/edit','KelasController@update');
 Route::get('/kelas/{kelas}/detail','KelasController@show');
 
-Route::get('/pertemuan','PertemuanController@index');
-Route::get('/pertemuan/tambah','PertemuanController@create');
-Route::post('/pertemuan/tambah','PertemuanController@store');
-Route::get('/pertemuan/{pertemuan}/detail','PertemuanController@show');   
+Route::get('/pertemuan/{kelas}','PertemuanController@index');
+Route::get('/pertemuan/{kelas}/tambah','PertemuanController@create');
+Route::post('/pertemuan/{kelas}/tambah','PertemuanController@store');
+Route::get('/pertemuan/{kelas}/{pertemuan}/detail','PertemuanController@show');   
 
 Route::get('/kelas/{kelas}/detail','KelasController@show')->name('Detail_Kelas');
 Route::get('/{kelas}/peserta/tambah','KelasController@peserta');
