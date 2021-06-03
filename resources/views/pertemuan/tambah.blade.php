@@ -20,7 +20,7 @@
                     </div>
                 @endif -->
                
-                <form action="/pertemuan/tambah" method="POST">
+                <form action="/pertemuan/{{$kelas}}/create" method="POST">
                 {{ csrf_field() }}
 
                 <div class="form-group">

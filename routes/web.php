@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::view('/',  'welcome');
+Route::view('/',  'login');
 
 Route::get('login', 'AuthController@showFormLogin')->name('login');
 Route::post('login', 'AuthController@login');
@@ -40,8 +40,8 @@ Route::get('/kelas/{kelas}/detail','KelasController@show');
 
 Route::get('/pertemuan/{kelas}','PertemuanController@index');
 Route::get('/pertemuan/{kelas}/tambah','PertemuanController@create');
-Route::post('/pertemuan/{kelas}/tambah','PertemuanController@store');
-Route::get('/pertemuan/{kelas}/{pertemuan}/detail','PertemuanController@show');   
+Route::post('/pertemuan/{kelas}/create','PertemuanController@store');
+Route::get('/pertemuan/{pertemuan}/detail','PertemuanController@show');   
 
 Route::get('/kelas/{kelas}/detail','KelasController@show')->name('Detail_Kelas');
 Route::get('/{kelas}/peserta/tambah','KelasController@peserta');

@@ -49,13 +49,13 @@ class CreateAllTable extends Migration
 
         Schema::create('pertemuan', function (Blueprint $table) {
             $table->increments('pertemuan_id');
-            $table->unsignedInteger('krs_id');
+            $table->unsignedInteger('kelas_id');
             $table->integer('pertemuan_ke');
             $table->string('materi', 50);
             $table->date('tanggal');
             $table->timestamps();
 
-            $table->foreign('krs_id')->references('krs_id')->on('krs')->onDelete('cascade');
+            $table->foreign('kelas_id')->references('id')->on('kelas')->onDelete('cascade');
         });
 
         Schema::create('absensi', function (Blueprint $table) {

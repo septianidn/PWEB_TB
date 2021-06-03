@@ -13,10 +13,9 @@ class PertemuanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($kelas)
     {
         $pertemuan=Pertemuan::orderBy('pertemuan_ke','asc')->get();
-        $kelas=Kelas::findOrFail($id);
         return view('pertemuan.index', compact('pertemuan','kelas'));
     }
 
@@ -25,9 +24,9 @@ class PertemuanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($kelas)
     {
-        return view('pertemuan.tambah');
+        return view('pertemuan.tambah', compact('kelas'));
     }
 
     /**
@@ -36,7 +35,7 @@ class PertemuanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $kelas)
     {
         $pesan = [
 
@@ -54,8 +53,13 @@ class PertemuanController extends Controller
             'tanggal',
         ], $pesan);
 
-        Pertemuan::create($request->all());
-        return redirect('/pertemuan')->with('status','Data Berhasil Ditambahkan');
+        Pertemuan::create([
+            'kelas_id' => $kelas,
+            'pertemuan_ke' => $request -> pertemuan_ke,
+            'tanggal' => $request -> tanggal,
+            'materi' => $request -> materi
+        ]);
+        return redirect('/pertemuan/{{$kelas}}')->with('status','Data Berhasil Ditambahkan');
     }
 
     /**
@@ -66,8 +70,8 @@ class PertemuanController extends Controller
      */
     public function show($pertemuan_id)
     {
-
-        $pertemuan=Pertemuan::findOrFail($pertemuan_id);
-        return view('pertemuan.detail', compact('pertemuan'));
+        $pertemuan=Pertemuan::where('pertemuan_id', $pertemuan_id) -> first();
+        $kelas=$pertemuan -> kelas;
+        return view('pertemuan.detail', compact('pertemuan','kelas'));
     }
 }

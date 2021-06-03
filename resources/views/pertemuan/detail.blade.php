@@ -22,13 +22,11 @@
                         <li class="list-group-item">Materi : {{$pertemuan['materi']}}</li>
                         <li class="list-group-item">Tanggal : {{$pertemuan['tanggal']}}</li>
                         </ul>
-                        <a href="/pertemuan" class="btn btn-primary">Kembali</a>
+                        <a href="/pertemuan/{{$kelas -> id}}" class="btn btn-primary">Kembali</a>
                     </div>
                 </div>
-        
         </div>
     </div>
-
 <br/>
 
  

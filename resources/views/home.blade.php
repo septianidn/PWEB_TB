@@ -27,7 +27,7 @@
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><img src="{{ asset('img/mahasiswa.png') }}" alt="mahasiswa" style="width:36px; height:36px;"></div>
                                 <h2 class="fs-4 fw-bold">Mahasiswa</h2>
-                                <p class="mb-0">With Bootstrap 5, we've created a fresh new layout for this template!</p>
+                                <p class="mb-0">Total Mahasiswa: </p>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><img src="{{ asset('img/kelas.png') }}" alt="kelas" style="width:36px; height:36px;"></div>
                                 <h2 class="fs-4 fw-bold">Kelas</h2>
-                                <p class="mb-0">As always, Start Bootstrap has a powerful collectin of free templates.</p>
+                                <p class="mb-0">Total Kelas: </p>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                             <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><img src="{{ asset('img/home.png') }}" alt="home" style="width:36px; height:36px;"></div>
                                 <h2 class="fs-4 fw-bold">Pertemuan</h2>
-                                <p class="mb-0">The heroic part of this template is the jumbotron hero header!</p>
+                                <p class="mb-0">Pertemuan ke- </p>
                             </div>
                         </div>
                     </div>
