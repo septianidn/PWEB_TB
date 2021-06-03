@@ -14,17 +14,17 @@
         <div class="d-flex justify-content-between">
             <h1 class="mt-3">Detail Pertemuan</h1>
         </div> 
+        <div class="mt-3">
+            <a href="/pertemuan/{{$kelas -> id}}" class="btn btn-primary">Kembali</a>
+            <h3>Pertemuan {{$pertemuan['pertemuan_ke']}}</h3>
+            <hr>
+            <div class="text-secondary">
+            Materi : {{$pertemuan['materi']}} &middot;
+            Tanggal : {{$pertemuan['tanggal']}} &middot;
+            </div>
+        </div>
         <div class="col-6">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">{{$pertemuan['pertemuan_ke']}}</h5>
-                        <ul class="list-group">
-                        <li class="list-group-item">Materi : {{$pertemuan['materi']}}</li>
-                        <li class="list-group-item">Tanggal : {{$pertemuan['tanggal']}}</li>
-                        </ul>
-                        <a href="/pertemuan/{{$kelas -> id}}" class="btn btn-primary">Kembali</a>
-                    </div>
-                </div>
+            <!-- disiko isi absen -->
         </div>
     </div>
 <br/>

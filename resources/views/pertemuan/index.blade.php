@@ -21,7 +21,7 @@
         <div class="col-6">
             @foreach($pertemuan as $prt)
             <div class="">
-                <div class="accordion" id="accordionExample">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -31,7 +31,7 @@
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
                 Materi : {{$prt -> materi}}
-                <a href="/pertemuan/{{$prt->pertemuan_id}}/detail" class="btn btn-sm btn-success">Detail</a>
+                <br><a href="/pertemuan/{{$prt->pertemuan_id}}/detail" class="btn btn-sm btn-success">Detail</a>
                 </div>
             </div>
         </div>
