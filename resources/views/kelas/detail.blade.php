@@ -5,7 +5,7 @@
 @section('content')
 
 @include('layouts.alert')
-    
+<a href="/kelas" class="btn btn-danger">Kembali</a>
     <div class="row">
         <div class="d-flex justify-content-between">
             <h1 class="mt-3">Detail Kelas</h1>

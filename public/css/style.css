@@ -4200,7 +4200,9 @@ textarea.form-control-lg {
 }
 .navbar-light .navbar-nav .show > .nav-link,
 .navbar-light .navbar-nav .nav-link.active {
-  color: rgba(0, 0, 0, 0.9);
+  font-weight: bold;
+  font-style: normal;
+  color: white;
 }
 .navbar-light .navbar-toggler {
   color: rgba(0, 0, 0, 0.55);
