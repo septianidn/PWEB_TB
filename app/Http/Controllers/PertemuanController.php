@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Kelas;
 use App\Pertemuan;
 
 use Illuminate\Http\Request;
@@ -68,10 +69,21 @@ class PertemuanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($pertemuan_id)
+    public function show($id_kelas,$id_pertemuan)
     {
-        $pertemuan=Pertemuan::where('pertemuan_id', $pertemuan_id) -> first();
-        $kelas=$pertemuan -> kelas;
-        return view('pertemuan.detail', compact('pertemuan','kelas'));
+        $pertemuan = Pertemuan::where('pertemuan_id', $id_pertemuan)->first();
+        $data_mhs = Kelas::select('mahasiswa.nama', 'kelas.id', 'kelas.nama_matkul', 'absensi.*')
+                        ->join('krs', 'kelas.id', '=', 'krs.kelas_id')
+                        ->join('mahasiswa', 'krs.mahasiswa_id', '=', 'mahasiswa.id')
+                        ->join('pertemuan', 'kelas.id', '=', 'pertemuan.kelas_id')
+                        ->leftjoin('absensi', function($query){
+                            $query->on('pertemuan.pertemuan_id', '=', 'absensi.pertemuan_id');
+                            $query->on('krs.krs_id', '=', 'absensi.krs_id');
+                        })
+                        ->where('kelas.id', $id_kelas)
+                        ->where('pertemuan.pertemuan_id', $id_pertemuan)
+                        ->get();
+        
+        return view('pertemuan.detail', compact('pertemuan','data_mhs'));
     }
 }

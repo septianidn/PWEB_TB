@@ -26,7 +26,7 @@
             Materi : {{$pertemuan['materi']}} &middot;
             Tanggal : {{$pertemuan['tanggal']}} &middot;
             <div class="mb-5">
-                <a href="/pertemuan/{{$kelas -> id}}" class="btn btn-primary">Kembali</a>
+                <a href="/pertemuan/{{$pertemuan ->kelas_id}}" class="btn btn-primary">Kembali</a>
             </div>
             </div>
         </div>
@@ -49,6 +49,7 @@
         <thead class="thead-light">
             <tr>
             <th scope="col">No</th>
+            <th scope="col">Nama</th>
             <th scope="col">Status</th>
             <th scope="col">Jam Masuk</th>
             <th scope="col">Jam Keluar</th>
@@ -56,9 +57,17 @@
             </tr>
         </thead>
         <tbody>
-        
+        @foreach($data_mhs as $k)
+            <tr>
+            <td>{{$loop->iteration}}</td>
+            <td>{{$k->nama}}</td>
+            <td>{{$k->durasi > 0 ? 'Hadir' : 'Tidak Hadir'}}</td>
+            <td>{{$k->jam_masuk ?? '-'}}</td>
+            <td>{{$k->jam_keluar ?? '-'}}</td>
+            <td>{{$k->durasi ?? '-'}}</td>
+            </tr>
             
-
+        @endforeach
         </tbody>
   
         </table>

@@ -31,7 +31,7 @@
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
                 Materi : {{$prt -> materi}}
-                <br><a href="/pertemuan/{{$prt->pertemuan_id}}/detail" class="btn btn-sm btn-success">Detail</a>
+                <br><a href="/pertemuan/{{$prt->kelas_id}}/{{$prt->pertemuan_id}}/detail" class="btn btn-sm btn-success">Detail</a>
                 </div>
             </div>
         </div>

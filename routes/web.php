@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::post('/mahasiswa/tambah', 'MahasiswaController@store');
     Route::get('/mahasiswa/{mhs}/edit', 'MahasiswaController@edit');
     Route::patch('/mahasiswa/update', 'MahasiswaController@update');
-    Route::delete('/mahasiswa/{mhs}/hapus', 'MahasiswaController@destroy');
+    Route::get('/mahasiswa/{mhs}/hapus', 'MahasiswaController@destroy');
     
     Route::get('/kelas/tambah','KelasController@create');
     Route::post('/kelas/tambah','KelasController@store');
@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     
     Route::post('/absensi/{pertemuan}/{kelas}','AbsensiController@upload');
       
-    Route::get('/pertemuan/{pertemuan}/detail','PertemuanController@show');  
+    Route::get('/pertemuan/{kelas}/{pertemuan}/detail','PertemuanController@show');  
     
     Route::get('/{kelas}/peserta/tambah','KelasController@peserta');
     Route::post('/{kelas}/peserta/tambah','KelasController@tambahpeserta');

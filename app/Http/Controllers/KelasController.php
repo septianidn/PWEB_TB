@@ -80,11 +80,14 @@ class KelasController extends Controller
 
         else{
         $kelas = Kelas::find($id);
-        $data_absen = Pertemuan::select('pertemuan.pertemuan_ke', 'pertemuan.tanggal', 'absensi.jam_masuk', 'absensi.jam_keluar', 'absensi.durasi')
-                                ->join('absensi', 'pertemuan.pertemuan_id', '=', 'absensi.pertemuan_id')
-                                ->join('krs', 'absensi.krs_id', '=', 'krs.krs_id')
-                                ->join('kelas', 'krs.kelas_id', '=', 'kelas.id')
+        $data_absen = Kelas::select('pertemuan.pertemuan_ke', 'pertemuan.tanggal', 'absensi.jam_masuk', 'absensi.jam_keluar', 'absensi.durasi')
+                                ->join('krs', 'kelas.id', '=', 'krs.kelas_id')
                                 ->join('mahasiswa', 'krs.mahasiswa_id', '=', 'mahasiswa.id')
+                                ->join('pertemuan', 'pertemuan.kelas_id', '=', 'kelas.id')
+                                ->leftjoin('absensi', function($query){
+                                    $query->on('pertemuan.pertemuan_id', '=', 'absensi.pertemuan_id');
+                                    $query->on('krs.krs_id', '=', 'absensi.krs_id');
+                                })
                                 ->where('mahasiswa.nim', auth()->user()->mahasiswa->nim)
                                 ->where('krs.kelas_id', $id)
                                 ->get();  

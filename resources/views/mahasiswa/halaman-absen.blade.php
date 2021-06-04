@@ -28,11 +28,11 @@
         <thead class="thead-light">
             <tr>
                         <th class="text-center">Pertemuan Ke</th>
-                        <th>Tanggal</th>
-                        <th>Jam masuk</th>
-                        <th>Jam keluar</th>
-                        <th>Durasi</th>
-                        <th>Status</th>
+                        <th class="text-center">Tanggal</th>
+                        <th class="text-center">Jam masuk</th>
+                        <th class="text-center">Jam keluar</th>
+                        <th class="text-center">Durasi</th>
+                        <th class="text-center">Status</th>
             </tr>
         </thead>
         <tbody>
@@ -40,11 +40,11 @@
             @foreach($data_absen as $mhs)
             <tr>
             <th scope="row" class="text-center">{{$mhs->pertemuan_ke}}</th>
-            <td>{{$mhs->tanggal}}</td>
-            <td>{{$mhs->jam_masuk}}</td>
-            <td>{{$mhs->jam_keluar}}</td>
-            <td>{{$mhs->durasi}}</td>
-            <td>{{$mhs->durasi == 0 ? 'Tidak Hadir' : 'Hadir'}}</td>
+            <td class="text-center">{{$mhs->tanggal}}</td>
+            <td class="text-center">{{$mhs->jam_masuk ?? '-'}}</td>
+            <td class="text-center">{{$mhs->jam_keluar ?? '-'}}</td>
+            <td class="text-center">{{$mhs->durasi ?? '-'}}</td>
+            <td class="text-center">{{$mhs->durasi == 0 ? 'Tidak Hadir' : 'Hadir'}}</td>
             <td>
 
             
