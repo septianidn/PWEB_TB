@@ -10,9 +10,11 @@
                         <li class="nav-item">
                           <a class="nav-link{{ request()->is('kelas') ? ' active' : ''}}" href="/kelas">Kelas</a>
                         </li>
+                        @if(auth()->user()->role == 1)
                         <li class="nav-item">
                           <a class="nav-link{{ request()->is('mahasiswa') ? ' active' : ''}}" href="/mahasiswa">Mahasiswa</a>
                         </li>
+                        @endif
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {{ Auth::user()->name }}
