@@ -11,8 +11,11 @@ class Krs extends Model
     public function kelas() {
         return $this -> belongsTo(Kelas::class);
     }
-        public function mahasiswa() {
+    public function mahasiswa() {
         return $this -> belongsTo(Mahasiswa::class);
+    }
+    public function absensi() {
+        return $this -> hasMany(Absen::class);
     }
 }
 

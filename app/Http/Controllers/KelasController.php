@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Kelas;
 use App\Krs;
 use App\Mahasiswa;
-
+use App\Pertemuan;
 use Illuminate\Http\Request;
 
 class KelasController extends Controller
@@ -72,13 +72,24 @@ class KelasController extends Controller
      */
     public function show($id)
     {
-        // $krs = Mahasiswa::find($id);
-        // dd($krs);
-        // $mahasiswa = Mahasiswa::whereIn('id',$krs)->pluck();
-        // dd ($mahasiswa);
+        if(auth()->user()->role==1){
         $kelas=Kelas::findOrFail($id);
         $mahasiswa=Kelas::find($id);
         return view('kelas.detail', compact('kelas','mahasiswa'));
+        }
+
+        else{
+        $kelas = Kelas::find($id);
+        $data_absen = Pertemuan::select('pertemuan.pertemuan_ke', 'pertemuan.tanggal', 'absensi.jam_masuk', 'absensi.jam_keluar', 'absensi.durasi')
+                                ->join('absensi', 'pertemuan.pertemuan_id', '=', 'absensi.pertemuan_id')
+                                ->join('krs', 'absensi.krs_id', '=', 'krs.krs_id')
+                                ->join('kelas', 'krs.kelas_id', '=', 'kelas.id')
+                                ->join('mahasiswa', 'krs.mahasiswa_id', '=', 'mahasiswa.id')
+                                ->where('mahasiswa.nim', auth()->user()->mahasiswa->nim)
+                                ->where('krs.kelas_id', $id)
+                                ->get();  
+        return view('mahasiswa.halaman-absen', compact('kelas', 'data_absen'));
+        }
     }
 
     /**

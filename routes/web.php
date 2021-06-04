@@ -39,10 +39,11 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
     Route::get('/pertemuan/{kelas}','PertemuanController@index');
     Route::get('/pertemuan/{kelas}/tambah','PertemuanController@create');
     Route::post('/pertemuan/{kelas}/create','PertemuanController@store');
-    Route::get('/pertemuan/{pertemuan}/detail','PertemuanController@show');   
-    Route::get('/kelas/{kelas}/detail','KelasController@show');
     
-    Route::get('/kelas/{kelas}/detail','KelasController@show')->name('Detail_Kelas');
+    Route::post('/absensi/{pertemuan}/{kelas}','AbsensiController@upload');
+      
+    Route::get('/pertemuan/{pertemuan}/detail','PertemuanController@show');  
+    
     Route::get('/{kelas}/peserta/tambah','KelasController@peserta');
     Route::post('/{kelas}/peserta/tambah','KelasController@tambahpeserta');
     Route::get('/peserta/{kelas_id}/{mahasiswa_id}/hapus','KelasController@hapuspeserta');
@@ -50,13 +51,14 @@ Route::group(['middleware' => ['auth', 'CheckRole:1']], function () {
 
 Route::group(['middleware' => ['auth', 'CheckRole:1,2']], function () {
     
-    Route::get('home', 'HomeController@index')->name('home');
     Route::get('/kelas','KelasController@index');
+    Route::get('home', 'HomeController@index')->name('home');
     Route::get('logout', 'AuthController@logout')->name('logout');
+    Route::get('/kelas/{kelas}/detail','KelasController@show')->name('Detail_Kelas');
+    //Route::get('/kelas/{kelas}/detail','KelasController@index');
 });
 Route::group(['middleware' => ['auth', 'CheckRole:2']], function () {
 
    
-    Route::get('/kelas/{kelas}/detail','KelasController@index');
 });
 
