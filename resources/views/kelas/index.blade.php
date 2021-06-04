@@ -9,7 +9,6 @@
             {{session('status')}}
         </div> 
     @endif
-    
     <div class="row">
         <div class="d-flex justify-content-between">
             <h1 class="mt-5">Daftar Kelas</h1>
@@ -29,7 +28,7 @@
                         @if(auth()->user()->role ==1)
                         <a href="/kelas/{{$kls->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
                         @endif
-                        <a href="/kelas/{{$kls->id}}/detail" class="btn btn-sm btn-success">Detail</a>
+                        <a href="/kelas/{{$kls->kelas_id ?? $kls->id}}/detail" class="btn btn-sm btn-success">Detail</a>
                     </button>
                 </div>
             </div>

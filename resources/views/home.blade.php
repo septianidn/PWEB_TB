@@ -40,15 +40,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-xxl-2 mb-3">
-                        <div class="card bg-light border-0 h-100">
-                            <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
-                                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><img src="{{ asset('img/home.png') }}" alt="home" style="width:36px; height:36px;"></div>
-                                <h2 class="fs-4 fw-bold">Pertemuan</h2>
-                                <p class="mb-0">Pertemuan ke- 1</p>
-                            </div>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </section>

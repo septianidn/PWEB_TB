@@ -24,11 +24,11 @@
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="flush-headingOne">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse{{$prt->pertemuan_ke}}" aria-expanded="false" aria-controls="flush-collapseOne">
                         Pertemuan {{$prt->pertemuan_ke}}
                         </button>
                         </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div id="flush-collapse{{$prt->pertemuan_ke}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
                 Materi : {{$prt -> materi}}
                 <br><a href="/pertemuan/{{$prt->kelas_id}}/{{$prt->pertemuan_id}}/detail" class="btn btn-sm btn-success">Detail</a>

@@ -17,10 +17,20 @@ class KelasController extends Controller
      */
     public function index()
     {
+        if(auth()->user()->role == 1){
         $kelas=Kelas::orderBy('semester','desc')->orderBy('tahun','desc')->get();
         return view('kelas.index', compact('kelas'));
+        }
+        else{
+        $kelas=Kelas::select('*')
+        ->join('krs' , 'krs.kelas_id' ,'=', 'kelas.id')
+        ->join('mahasiswa', 'mahasiswa.id', '=', 'krs.mahasiswa_id')
+        ->where('mahasiswa.nim', auth()->user()->username)
+        ->orderBy('semester','desc')->orderBy('tahun','desc')->get();
+        
+        return view('kelas.index', compact('kelas'));
+        }
     }
-
     /**
      * Show the form for creating a new resource.
      *
