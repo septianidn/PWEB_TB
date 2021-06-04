@@ -25,6 +25,10 @@
                 <div class="btn-group" role="group" aria-label="Basic outlined example">
                     <button type="button" class="btn btn-outline-primary" style="position: relative;">{{$kls->nama_matkul}}
                         <br>
+                        <br>
+                        <img src="{{asset('img/logo-unand.png')}}" alt="logo-unand" style="width: 100px; height: 100px;">
+                        <br>
+                        <br>
                         @if(auth()->user()->role ==1)
                         <a href="/kelas/{{$kls->id}}/edit" class="btn btn-sm btn-warning">Edit</a>
                         @endif
